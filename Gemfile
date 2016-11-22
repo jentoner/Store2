@@ -27,6 +27,10 @@ gem 'carrierwave'
 # for pagination
 gem 'kaminari'
 
+# for thumbnail photos
+gem 'mini_magick'
+#gem 'rmagick'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

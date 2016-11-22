@@ -1,24 +1,51 @@
 <p id="notice"><%= notice %></p>
 
+<html lang="en">
 
-<h4 class="card-title">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<div class="container" class="pull-right">
+  <div class="row">
+    <div class="col-sm-4 col-lg-4 col-md-4">
       <% @products.each do |product| %>
-        <%= product.name %>
-      </h4>
+        <h2><%= product.name %></h2>
+
       <% if product.image.present? %>
-      <div class="col-sm-4">
-        <%= image_tag product.image%>
-
+      <div class="thumbnail">
+        <%= image_tag product.image %>
+      </div>
       <% end %>
-  <p class="card-text"><%= product.description %></p>
-  <p class="card-text">$<%= product.price %>0</p>
-  <p class="card-text"><%= product.stock_quantity %> left in stock</p>
-
+  <div class="caption">
+    <p><%= product.description %></p>
+    <p class="pull-right"><%= number_to_currency(product.price) %></p>
+    <p><%= product.stock_quantity %> left in stock</p>
+  </div>
   <p class="card-text"><%= link_to 'Show', product %></p>
-  <p class="card-text"><%= link_to 'Edit', edit_product_path(product) %></p>
-  <p class="card-text"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </p>
 <% end %>
+</div>
+</div>
+</div>
 <br>
 <%= paginate @products %>
 <%= link_to 'New Product', new_product_path %>
