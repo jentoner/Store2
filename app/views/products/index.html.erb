@@ -7,8 +7,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,28 +22,35 @@
     <![endif]-->
 
 </head>
+<div class="card-deck-wrapper">
+   <div class="card-deck">
+     <div class="row">
+       <div class="col-md-12">
 
-<div class="container" class="pull-right">
-  <div class="row">
-    <div class="col-sm-4 col-lg-4 col-md-4">
-      <% @products.each do |product| %>
-        <h2><%= product.name %></h2>
-
+<% @products.each do |product| %>
+</div>
+</div>
+</div>
+<div class="col-sm-4 col-lg-4 col-md-4">
+  <div class="card">
+<h2 class="card-title"><%= product.name %></h2>
       <% if product.image.present? %>
+      <div class="caption">
       <div class="thumbnail">
-        <%= image_tag product.image %>
+        <%= image_tag product.image, class: 'card-img-top img-fluid'  %>
       </div>
-      <% end %>
-  <div class="caption">
-    <p><%= product.description %></p>
+<% end %>
+
+<p><%= product.description %></p>
+  </div>
     <p class="pull-right"><%= number_to_currency(product.price) %></p>
     <p><%= product.stock_quantity %> left in stock</p>
-  </div>
-  <p class="card-text"><%= link_to 'Show', product %></p>
+
+  <h6 class="card-text"><span class="tag tag-default"><%= link_to 'Show', product %></span></h6>
 <% end %>
 </div>
 </div>
-</div>
 <br>
-<%= paginate @products %>
-<%= link_to 'New Product', new_product_path %>
+<div><%= paginate @products %>
+<span class="tag tag-default"><%= link_to 'New Product', new_product_path %></span>
+</div>
